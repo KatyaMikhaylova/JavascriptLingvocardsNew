@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    h1= collection.title
+    h5 Added by #{author}
+    ul.list-group
+    -var cards = collection.cards;
+    each card, i in cards
+        li.list-group-item
+            p= card.front
+            p= card.back
+            p= card.translation
+
+
+        if user
+            if user.id == collection.author
+                a.btn.btn-default(href='/cards/editcard/' + card.id) Edit card
+                a.btn.btn-danger.delete-card(href='#', card-id=card.id) Delete card
+    hr
+    if user
+        if user.id == collection.author
+            a.btn.btn-default(href='/cards/edit/'+collection._id) Add more cards to collection
+            a.btn.btn-danger.delete-article(href='#',data-id=collection._id) Delete collection

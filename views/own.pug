@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 #{title}
+    ul.list-group
+        each card, i in cards
+            li.list-group-item
+                a(href="/cards/"+card._id)= card.title

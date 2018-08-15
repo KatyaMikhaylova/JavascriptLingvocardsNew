@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    h1= collection.title
+    h5 Added by #{author}
+    .description
+        p=collection.description
+        a.btn.btn-danger.get-data(href='#',  coll-id=collection._id) #{__('START')}
+    -var card = collection.cards[0];
+    .operate(style="display: none")
+        .flip(id="js-flip")
+            .card
+                .face.front(id="fface")=card.front
+                .face.back
+                    .engl(id="bface")=card.back
+                    .russ(id="bfaceT")=card.translation
+        a.btn.btn-danger( id='next_button') #{__('NEXT')}
+        a.btn.btn-danger( id='translate') #{__('TRANSL')}
+    .question(style="display: none")
+        .popup(style="display: none")
+            p.mess
+            a.btn.btn-danger( id='next_question') #{__('NEXT')}
+        .task.flip.card.face(id='task-space')
+        br
+        .options
+            .demo.bordered(id='first' data-answ='')
+            .demo.bordered(id='second' data-answ='')
+            .demo.bordered(id='third' data-answ='')
+    .clearfix
+
+
+
+
+

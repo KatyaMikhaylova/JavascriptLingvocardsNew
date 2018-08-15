@@ -1,0 +1,11 @@
+{
+  "WELCOME": "Study Javascript with Lingvocards!",
+  "REGISTER": "Register",
+  "LOGIN": "Login",
+  "LOGOUT": "Logout",
+  "ADD": "Add collection of cards",
+  "START": "Start",
+  "NEXT": "Next",
+  "TRANSL": "Translate",
+  "HOME": "My collections"
+}

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1 #{title}
+    form(method='POST', action='/collections/add')
+        #form-group
+            label Collection:
+            input.form-control(name='colln', type='text')
+        br
+        input.btn.btn-primary(type='submit',value='Submit')

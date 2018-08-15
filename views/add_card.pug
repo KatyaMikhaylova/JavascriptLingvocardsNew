@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 #{title}
+    form(method='POST', action='/cards/add')
+        #form-group
+            label Collection:
+            input.form-control(name='colln', type='text')
+        #form-group
+            label Description:
+            input.form-control(name='descr', type='text')
+        #form-group
+            label Definition:
+            input.form-control(name='front', type='text')
+        #form-group
+            label Explanation:
+            textarea.form-control(name='back', type='text')
+        #form-group
+            label Translation:
+            textarea.form-control(name='transl', type='text')
+        br
+        input.btn.btn-primary(type='submit', value='Submit')

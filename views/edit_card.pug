@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1 #{title}
+    form(method='POST', action='/cards/editcard/'+card.id)
+        #form-group
+            label Definition:
+            input.form-control(name='front', type='text', value=card.front)
+        #form-group
+            label Explanation:
+            textarea.form-control(name='back')= card.back
+        #form-group
+            label Translation:
+            textarea.form-control(name='transl')= card.translation
+        br
+        input.btn.btn-primary(type='submit',value='Submit')

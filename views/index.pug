@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1 #{__('WELCOME')}
+    .container
+        .row
+        each card, i in cards
+            .col-md-4
+                a(href='/lingvo/' + card._id)
+                    img(src='/images/js_logo.png')
+                    br
+                    p=card.title
+
+
+
+

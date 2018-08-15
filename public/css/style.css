@@ -1,0 +1,54 @@
+.alert-error{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-success_msg{
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.nav>li>a.language_icon {
+  padding-top: 5px;
+}
+#fface {
+  color:black;
+}
+.back>.russ {
+  display: none
+}
+.back.hid>.russ {
+  display:block
+}
+.back.hid>.engl  {
+  display: none;
+}
+.bordered {
+  border: 3px solid #26a69a;;
+  border-radius: 2px;
+  background-color: transparent;
+  margin: 10px 0 0 10px;
+  padding: 10px;
+
+}
+.task, .bordered {
+  font-size: 3em;
+  text-align: center;
+}
+. task {
+  line-height: 200px;
+
+}
+.bordered {
+  line-height: 70px;
+}
+#task-space {
+  float: left;
+  width:45%;
+}
+.options {
+float:right;
+  width: 45%;
+  height: 50%;
+}
