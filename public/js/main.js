@@ -29,7 +29,7 @@ $(document).ready(function () {
             }
         });
     });
-    $('.get-data').on('click', function (x) {
+    $('.get-data').on('mousedown', function (x) {
         $target = $(x.target);
         const id = $target.attr('coll-id');
 
