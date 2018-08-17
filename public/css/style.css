@@ -120,3 +120,23 @@ label {
 .question {
   margin-top: 20px;
 }
+.operate .flip .card .back {
+  font-size:1.8em;
+}
+.operate .flip,.operate .flip .card  {
+  height: 360px;
+  width: 600px;
+}
+.operate .flip .card .back {
+  padding: 10px;
+}
+.operate hr  {
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: #333; /* old IE */
+  background-color: #333; /* Modern Browsers */
+}
+.operate #fface {
+  line-height: 300px;
+}
