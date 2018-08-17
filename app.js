@@ -166,6 +166,6 @@ app.use('/own', own);
 app.use('/lingvo', lingvo);
 
 // Start Server
-app.listen(6633, function(){
+app.listen(process.env.PORT ||6633, function(){
   console.log('Server started on port 6633...');
 });
