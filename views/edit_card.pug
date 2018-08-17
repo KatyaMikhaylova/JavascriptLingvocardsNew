@@ -1,16 +1,19 @@
 extends layout
 
 block content
-    h1 #{title}
+    h1 #{__('EDITCA')}
     form(method='POST', action='/cards/editcard/'+card.id)
         #form-group
-            label Definition:
+            label #{__('DEF')}
             input.form-control(name='front', type='text', value=card.front)
         #form-group
-            label Explanation:
+            label #{__('EXPL')}
             textarea.form-control(name='back')= card.back
         #form-group
-            label Translation:
+            label #{__('TRNSL')}
             textarea.form-control(name='transl')= card.translation
+        #form-group
+            label #{__('EXMPL')}
+            textarea.form-control(name='exmpl')= card.exmpl
         br
-        input.btn.btn-primary(type='submit',value='Submit')
+        input.btn.btn-primary(type='submit',value='OK')

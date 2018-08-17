@@ -1,22 +1,25 @@
 extends layout
 
 block content
-    h1 #{title}
+    h1 #{__('ADDCOLLCARD')}
     form(method='POST', action='/cards/add')
         #form-group
-            label Collection:
+            label #{__('COLLN')}
             input.form-control(name='colln', type='text')
         #form-group
-            label Description:
+            label #{__('DESCR')}
             input.form-control(name='descr', type='text')
         #form-group
-            label Definition:
+            label #{__('DEF')}
             input.form-control(name='front', type='text')
         #form-group
-            label Explanation:
+            label #{__('EXPL')}
             textarea.form-control(name='back', type='text')
         #form-group
-            label Translation:
+            label #{__('TRNSL')}
             textarea.form-control(name='transl', type='text')
+        #form-group
+            label #{__('EXMPL')}
+            textarea.form-control(name='exmpl', type='text')
         br
-        input.btn.btn-primary(type='submit', value='Submit')
+        input.btn.btn-primary(type='submit', value='OK')

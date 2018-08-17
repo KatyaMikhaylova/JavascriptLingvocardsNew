@@ -17,7 +17,8 @@ let collectionSchema = mongoose.Schema({
     cards: [{
         front: String,
         back:  String,
-        translation: String
+        translation: String,
+        example: String
 
     }]
 

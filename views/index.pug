@@ -5,10 +5,10 @@ block content
     .container
         .row
         each card, i in cards
-            .col-md-4
+            .col-md-4.noa
                 a(href='/lingvo/' + card._id)
-                    img(src='/images/js_logo.png')
-                    br
+                    .cover
+                        p=card.cards[0].front
                     p=card.title
 
 

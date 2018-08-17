@@ -6,7 +6,7 @@ $(document).ready(function () {
             type: 'DELETE',
             url: '/cards/' + id,
             success: function (response) {
-                alert('Deleting collection');
+                alert(`Коллекция удалена`);
                 window.location.href = '/own';
             },
             error: function (err) {
@@ -21,7 +21,7 @@ $(document).ready(function () {
             type: 'DELETE',
             url: '/cards/remove/' + id,
             success: function (response) {
-                alert('Deleting card');
+                alert(`Карточка удалена`);
                 window.location.href = '/own';
             },
             error: function (err) {
@@ -45,41 +45,48 @@ $(document).ready(function () {
         $('.operate').show();
         let arr1 = data.cards;
         studied.push(arr1[0]);
+console.log(arr1);
         $('#next_button').on('click', function (e) {
 
-if (forgotten.length !== 0) {
-   arr1= $.merge(arr1, forgotten);
+                if (forgotten.length !== 0) {
+                    arr1 = $.merge(arr1, forgotten);
 
-    forgotten = [];
+                    forgotten = [];
 
-}
-            let iter = nextCounter(arr1);
-    let new_card = nextItem(arr1);
-    if (new_card) {
+                }
+                iter++;
+                console.log(iter);
+                let new_card = nextItem(arr1);
+                if (new_card) {
 
-        if (iter % 3 !== 0 || iter === 0) {
-            document.getElementById('fface').textContent = new_card.front;
-            document.getElementById('bface').textContent = new_card.back;
-            document.getElementById('bfaceT').textContent = new_card.translation;
-            studied.push(new_card);
-        }
-        else {
-            AskOne(studied);
-            document.getElementById('fface').textContent = new_card.front;
-            document.getElementById('bface').textContent = new_card.back;
-            document.getElementById('bfaceT').textContent = new_card.translation;
-            studied.push(new_card);
+                    if (iter % 3 !== 0 || iter === 0) {
+                        document.getElementById('fface').textContent = new_card.front;
+                        document.getElementById('bface').textContent = new_card.back;
+                        document.getElementById('bfaceT').textContent = new_card.translation;
+                        document.getElementById('bfaceE').textContent = new_card.example;
+                        studied.push(new_card);
+                    }
+                    else {
+                        AskOne(studied);
+                        document.getElementById('fface').textContent = new_card.front;
+                        document.getElementById('bface').textContent = new_card.back;
+                        document.getElementById('bfaceT').textContent = new_card.translation;
+                        document.getElementById('bfaceE').textContent = new_card.example;
+                        studied.push(new_card);
 
-        }
-    }
-    else if (studied.length > 1) {
-            studied.push(learned[0]);
-            AskOne(studied);
-     }
-    else {
-        alert('Вы закончили изучение этого набора карточек');
-        window.location.href = '/'
-    }
+                    }
+                }
+                else if (studied.length > 1 && learned.length!==0) {
+                    studied.push(learned[0]);
+                    AskOne(studied);
+                }
+                else if (learned.length==0 && studied.length == 3) {
+                    AskOne(studied);
+                }
+                else {
+                    alert('Вы закончили изучение этого набора карточек');
+                    window.location.href = '/'
+                }
 
         });
 
@@ -89,7 +96,7 @@ if (forgotten.length !== 0) {
     let learned = [];
     let forgotten = [];
     let i = 0;
-    let counter = 0;
+    let iter = 0;
 
     function nextItem(arr) {
         i = i + 1; // increase i by one
@@ -103,41 +110,24 @@ if (forgotten.length !== 0) {
 
     function nextCounter(arr) {
         counter = counter + 1; // increase i by one
-        counter = counter % arr.length; // if we've gone too high, start from `0` again
+       // counter = counter % arr.length; // if we've gone too high, start from `0` again
+       //  if (counter<=arr.length){
+       //      return counter;
+       //  } else {
+       //      return 0
+       //  }
         return counter;
+    }
+
+    function simpleItem(arr) {
+        i = i + 1;
+        i = i % arr.length;
+        return arr[i];
     }
 
     function AskOne(x) {
         $('.operate').hide();
         $('.question').show();
-    //     let i = x.length;
-    //
-    // if (i == 1) {
-    //
-    //     document.getElementById('first').textContent = x[0].back;
-    //     $('#first').attr('data-answ', x[0]._id);
-    //     document.getElementById('task-space').textContent = x[0].front;
-    //     $('#task-space').attr('data-task', x[0]._id);
-    //     checkAnswer(x[0]);
-    //     studied.splice(studied.indexOf(x[0]), 1);
-    //     if (x.length == 0){
-    //         $('.question').hide();
-    //         $('.operate').show();
-    //     }
-    //
-    // }
-    // else if (i == 2) {
-    //     showQuest(x, 1);
-    //     //
-    //     $('#next_question').on('click', function () {
-    //         $('.popup').hide();
-    //         $('.demo').off();
-    //         showQuest(x, 1);
-    //     })
-    //
-    //
-    // }
-    // else if (i == 3) {
         showQuest(x, 1);
         $('#next_question').on('click', function () {
             $('.popup').removeClass('alert-success_msg alert-error');
@@ -145,10 +135,6 @@ if (forgotten.length !== 0) {
             $('.demo').off();
             showQuest(x, 1);
         });
-
-
-   // }
-
 
 
     }
@@ -206,6 +192,7 @@ if (forgotten.length !== 0) {
                 $('.mess').text('Ответ верный');
                 studied.splice(studied.indexOf(quest), 1);
                 learned.push(quest);
+                console.log(learned);
                 console.log(studied);
 
 
@@ -215,7 +202,7 @@ if (forgotten.length !== 0) {
                 $('.mess').text('Ответ неверный');
                 studied.splice(studied.indexOf(quest), 1);
                 forgotten.push(quest);
-console.log(studied);
+                console.log(studied);
             }
         });
 

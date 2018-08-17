@@ -8,24 +8,25 @@ let User = require('../models/user');
 
 router.get('/add', ensureAuthenticated, function (req, res) {
     res.render('add_card', {
-        title: 'Add collection of cards',
+
         locale: req.i18n.getLocale()
     });
 });
 
 router.post('/add', function (req, res) {
-    req.checkBody('colln', 'Collection name is required').notEmpty();
-    req.checkBody('descr', 'Description is required').notEmpty();
-    req.checkBody('front', 'Definition is required').notEmpty();
-    req.checkBody('back', 'Explanation is required').notEmpty();
-    req.checkBody('transl', 'Translation is required').notEmpty();
+    req.checkBody('colln', 'Поле "Название коллекции" должно быть заполнено').notEmpty();
+    req.checkBody('descr', 'Поле "Описание коллекции" должно быть заполнено').notEmpty();
+    req.checkBody('front', 'Поле "Понятие" должно быть заполнено').notEmpty();
+    req.checkBody('back', 'Поле "Определение" должно быть заполнено').notEmpty();
+    req.checkBody('transl', 'Поле "Перевод" должно быть заполнено').notEmpty();
+    req.checkBody('exmpl', 'Поле "Пример" должно быть заполнено').notEmpty();
 
     // Get Errors
     let errors = req.validationErrors();
 
     if (errors) {
         res.render('add_card', {
-            title: `Add collection of cards`,
+
             errors: errors,
             locale: req.i18n.getLocale()
         });
@@ -34,14 +35,14 @@ router.post('/add', function (req, res) {
         collection.title = req.body.colln;
         collection.author = req.user._id;
         collection.description = req.body.descr;
-        collection.cards.push({front: `${req.body.front}`, back: `${req.body.back}`, translation: `${req.body.transl}`});
+        collection.cards.push({front: `${req.body.front}`, back: `${req.body.back}`, translation: `${req.body.transl}`, example: `${req.body.exmpl}`});
 
         collection.save(function (err) {
             if (err) {
                 console.log(err);
                 return;
             } else {
-                req.flash('success', 'Card added to collection');
+                req.flash('success', 'Карточка добавлена в коллекцию');
                 res.redirect('/own');
             }
         });
@@ -50,13 +51,13 @@ router.post('/add', function (req, res) {
 router.get('/editcard/:id', ensureAuthenticated, function(req, res){
     Collection.findOne({'cards._id': req.params.id},function(err,result){
         if(result.author != req.user._id){
-            req.flash('danger', 'Not Authorized');
+            req.flash('danger', 'Вы не авторизованы');
             res.redirect('/');
         } else {
             let cid = req.params.id
             let card = result.cards.id(cid);
             res.render('edit_card', {
-                title: 'Edit Card',
+
                 card: card,
                 locale: req.i18n.getLocale()
 
@@ -73,12 +74,13 @@ router.post('/editcard/:id', function(req, res){
             card.front = req.body.front;
             card.back = req.body.back;
         card.translation = req.body.transl;
+        card.example = req.body.exmpl;
             collection.save();
             if (err) {
                 console.log(err);
                 return;
             } else {
-                req.flash('success', 'Card Updated');
+                req.flash('success', 'Карточка отредактирована');
                 res.redirect('/cards/' + collection._id);
             }
 
@@ -92,11 +94,11 @@ router.post('/editcard/:id', function(req, res){
 router.get('/edit/:id', ensureAuthenticated, function(req, res){
     Collection.findById(req.params.id, function(err, card){
         if(card.author != req.user._id){
-            req.flash('danger', 'Not Authorized');
+            req.flash('danger', 'Вы не авторизованы');
             res.redirect('/');
         }
         res.render('edit_collection', {
-            title:`Add card to ${card.title} collection`,
+
             card: card,
             locale: req.i18n.getLocale()
         });
@@ -105,13 +107,14 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
 
 //Add more cards to existing collection
 router.post('/edit/:id', function(req, res){
-    Collection.update({ _id: req.params.id},{ $push: { "cards": { front: `${req.body.front}`, back: `${req.body.back}`, translation: `${req.body.transl}` }
+    Collection.update({ _id: req.params.id},{ $push: { "cards": { front: `${req.body.front}`, back: `${req.body.back}`, translation: `${req.body.transl}`,
+                example: `${req.body.exmpl}` }
     } },function(err){
                 if(err){
                     console.log(err);
                     return;
                 } else {
-                    req.flash('success', 'Card added to collection');
+                    req.flash('success', 'Карточка добавлена в коллекцию');
                     res.redirect('/cards/'+req.params.id);
                 }
             });
@@ -176,7 +179,7 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     } else {
-        req.flash('danger', 'Please login');
+        req.flash('danger', 'Пожалуйста, выполните вход');
         res.redirect('/users/login');
     }
 }

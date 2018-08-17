@@ -10,7 +10,7 @@
   border-color: #d6e9c6;
 }
 .nav>li>a.language_icon {
-  padding-top: 5px;
+  padding-top: 0px;
 }
 #fface {
   color:black;
@@ -46,9 +46,77 @@
 #task-space {
   float: left;
   width:45%;
+
 }
 .options {
 float:right;
   width: 45%;
   height: 50%;
+}
+.cover {
+  -webkit-perspective: 800;
+  width: 170px;
+  height: 210px;
+  background: white;
+  color: #29a597;
+  margin: 10px auto;
+  text-align: center;
+  line-height: 190px;
+  font-size: 1em;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(29, 29, 29, 0.75);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(29, 29, 29, 0.75);
+  box-shadow: 0px 1px 2px 0px rgba(29, 29, 29, 0.75);
+  border-radius: 2px;
+  font-family: Georgia;
+
+}
+.noa>a:hover {
+  text-decoration: none;
+  color: black;
+}
+.noa>a {
+  text-align: center;
+  color: #434343;
+  font-size: 2em;
+}
+h1 {
+  color: #434343;
+  text-align: center;
+}
+.nav>li>a {
+  font-size:1.2em;
+
+}
+a.navbar-brand {
+  font-size:1.4em;
+}
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+  color: #d2d2d2;
+}
+nav.navbar-inverse {
+  background-color: #434343;
+  padding-top: 5px;
+}
+label {
+  font-size: 0.9rem;
+  color: #6f6f6f;
+}
+.btn {
+  margin: 5px 3px;
+}
+.flip .card .back {
+  font-size: 2em;
+  line-height: 50px;
+}
+.question .alert-success_msg, .question .alert-error {
+  font-size: 1.5em;
+  padding:5px;
+  margin:10px;
+}
+.task.flip.card.face {
+  line-height: 250px;
+  font-family: Georgia;
+}
+.question {
+  margin-top: 20px;
 }

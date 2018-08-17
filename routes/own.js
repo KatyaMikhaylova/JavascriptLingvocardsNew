@@ -14,7 +14,6 @@ router.get('/',ensureAuthenticated, function (req, res) {
             } else {
 
                 res.render('own', {
-                    title: 'My collections of cards',
                     cards: cards,
                     locale: req.i18n.getLocale()
 
