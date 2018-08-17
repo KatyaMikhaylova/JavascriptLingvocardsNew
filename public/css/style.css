@@ -74,9 +74,15 @@ float:right;
   text-decoration: none;
   color: black;
 }
-.noa>a {
+.noa>a>p {
   text-align: center;
   color: #434343;
+
+}
+p.name {
+  font-size: 1.1em !important;
+}
+.noa>a>.cover>p{
   font-size: 2em;
 }
 h1 {
