@@ -50,12 +50,30 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Session Middleware
+// app.use(session({
+//   secret: 'keyboard cat',
+//   resave: true,
+//   saveUninitialized: true
+// }));
+app.set('trust proxy', 1);
+const MongoStore = require('connect-mongo')(session);
 app.use(session({
-  secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true
+    cookie:{
+        secure: true,
+        maxAge:60000
+    },
+    store: new MongoStore({ mongooseConnection: db }),
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: false
 }));
 
+app.use(function(req,res,next){
+    if(!req.session){
+        return next(new Error('Oh no')) //handle error
+    }
+    next() //otherwise continue
+});
 // Express Messages Middleware
 app.use(require('connect-flash')());
 app.use(function (req, res, next) {
