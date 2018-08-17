@@ -97,11 +97,18 @@ a.navbar-brand {
   font-size:1.4em;
 }
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
-  color: #d2d2d2;
+  color: #fbfbfb;
+    font-weight: bolder;
+}
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav > li > a:hover {
+    color: #d2d2d2;
 }
 nav.navbar-inverse {
-  background-color: #434343;
+  background-color: #0ab5bc;
   padding-top: 5px;
+    border:none;
+    border-radius: 0px;
+    min-height: 75px;
 }
 label {
   font-size: 0.9rem;
@@ -109,6 +116,11 @@ label {
 }
 .btn {
   margin: 5px 3px;
+    background-color: #0a9aa1;
+    font-weight: bolder;
+}
+.btn:hover, .btn-danger:hover {
+    background-color: #0ab5bc;
 }
 .flip .card .back {
   font-size: 2em;
@@ -136,7 +148,8 @@ label {
 .operate .flip .card .back {
   padding: 10px;
 }
-.operate hr  {
+
+hr, .operate hr  {
   border: none;
   height: 1px;
   /* Set the hr color */
