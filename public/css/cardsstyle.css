@@ -8,6 +8,13 @@ body {
     position: relative;
     margin: 50px auto;
 }
+.operate .flip {
+    -webkit-perspective: 800;
+    width: 600px;
+    height: 360px;
+    position: relative;
+    margin: 50px auto;
+}
 .flip .card.flipped {
     -webkit-transform: rotatey(-180deg);
 }
