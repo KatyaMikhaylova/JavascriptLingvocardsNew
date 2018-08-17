@@ -1,5 +1,5 @@
 module.exports = {
-  database:'mongodb://localhost:27017/ljlcdb',
+  database:'mongodb://admin:WSXedc45@ds056559.mlab.com:56559/jslcdb',
   secret: 'yoursecret'
 }
 
