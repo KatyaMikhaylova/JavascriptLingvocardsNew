@@ -3,13 +3,13 @@ body {
 }
 .flip {
     -webkit-perspective: 800;
-    width: 400px;
-    height: 300px;
+    width: 600px;
+    height: 360px;
     position: relative;
     margin: 50px auto;
 }
 .operate .flip {
-    -webkit-perspective: 1000;
+    -webkit-perspective: 800;
     width: 600px;
     height: 360px;
     position: relative;
