@@ -48,13 +48,17 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 // Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
-let MemoryStore = require('session-memory-store')(session);
+let MemoryStore = require('memorystore')(session);
 // Express Session Middleware
 app.use(session({
   secret: 'keyboard cat',
   resave: true,
   saveUninitialized: true,
-    store: new MemoryStore()
+    store: new MemoryStore(
+        {
+            checkPeriod: 86400000 // prune expired entries every 24h
+        }
+    )
 }));
 app.set('trust proxy', 1);
 

@@ -19,6 +19,7 @@
     "express-session": "^1.15.3",
     "express-validator": "^3.2.0",
     "i18n-x": "^0.1.6",
+    "memorystore": "^1.6.0",
     "mongoose": "^4.10.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
