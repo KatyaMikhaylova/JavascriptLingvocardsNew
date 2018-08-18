@@ -35,7 +35,7 @@ $(document).ready(function () {
         $target = $(x.target)||$(x.event);
         const id = $target.attr('coll-id');
 
-        fetch(`/lingvo/getdata/${id}`, {
+        fetch('/lingvo/getdata/'+id, {
             credentials: 'include'
         })
             .then(res => res.json())
