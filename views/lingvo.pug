@@ -5,7 +5,7 @@ block content
     h5 #{__('ADDEDBY')} #{author}
     .description
         p=collection.description
-        a.btn.btn-danger.get-data(href="javascript:function()" coll-id=collection._id) #{__('START')}
+        a.btn.btn-danger.get-data(coll-id=collection._id) #{__('START')}
     -var card = collection.cards[0];
     .operate(style="display: none").center-align
         .flip(id="js-flip")

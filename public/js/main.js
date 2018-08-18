@@ -29,8 +29,10 @@ $(document).ready(function () {
             }
         });
     });
-    $('.get-data').on('click', function (x) {
-        $target = $(x.target);
+
+     $('.get-data').on ('click',   function (x) {
+         console.log('works');
+        $target = $(x.target)||$(x.event);
         const id = $target.attr('coll-id');
 
         fetch(`/lingvo/getdata/${id}`, {
@@ -46,7 +48,7 @@ $(document).ready(function () {
         let arr1 = data.cards;
         studied.push(arr1[0]);
 console.log(arr1);
-        $('#next_button').on('click', function (e) {
+        $('#next_button').on('click', function (event) {
 
                 if (forgotten.length !== 0) {
                     arr1 = $.merge(arr1, forgotten);
