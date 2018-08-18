@@ -6,7 +6,7 @@ $(document).ready(function () {
             type: 'DELETE',
             url: '/cards/' + id,
             success: function (response) {
-                alert(`Коллекция удалена`);
+                alert('Коллекция удалена');
                 window.location.href = '/own';
             },
             error: function (err) {
@@ -21,7 +21,7 @@ $(document).ready(function () {
             type: 'DELETE',
             url: '/cards/remove/' + id,
             success: function (response) {
-                alert(`Карточка удалена`);
+                alert('Карточка удалена');
                 window.location.href = '/own';
             },
             error: function (err) {
