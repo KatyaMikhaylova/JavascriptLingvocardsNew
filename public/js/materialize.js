@@ -7469,7 +7469,7 @@ $jscomp.polyfill = function (e, r, p, m) {
                     }
                 });
             } else if ($(e.target).is($('.card .activator')) || $(e.target).is($('.card .activator i'))) {
-                $card.css('overflow', 'visible');
+                $card.css('overflow', 'hidden');
                 $cardReveal.css({ display: 'block' });
                 anim({
                     targets: $cardReveal[0],

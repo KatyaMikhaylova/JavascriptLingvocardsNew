@@ -38,7 +38,8 @@ $(document).ready(function () {
         fetch('/lingvo/getdata/'+id, {
             credentials: 'include'
         })
-            .then(res => res.json())
+            .then(function(res) {
+                res.json()})
             .then(Lingvo);
     });
 
