@@ -38,28 +38,27 @@ $(document).ready(function () {
         fetch('/lingvo/getdata/'+id, {
             credentials: 'include'
         })
-            .then(function(res) {
-                res.json()})
+            .then(res => res.json())
             .then(Lingvo);
     });
 
     function Lingvo(data) {
         $('.description').hide();
         $('.operate').show();
-        let arr1 = data.cards;
-        studied.push(arr1[0]);
-console.log(arr1);
+        let arrnow = data.cards;
+        studied.push(arrnow[0]);
+console.log(arrnow);
         $('#next_button').on('click', function (event) {
 
                 if (forgotten.length !== 0) {
-                    arr1 = $.merge(arr1, forgotten);
+                    arrnow = $.merge(arrnow, forgotten);
 
                     forgotten = [];
 
                 }
                 iter++;
                 console.log(iter);
-                let new_card = nextItem(arr1);
+                let new_card = nextItem(arrnow);
                 if (new_card) {
 
                     if (iter % 3 !== 0 || iter === 0) {
