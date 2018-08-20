@@ -17,6 +17,10 @@ body {
 }
 .flip .cardy.flipped {
     -webkit-transform: rotatey(-180deg);
+    -moz-transform: rotatey(-180deg);  /* FF3.5/3.6 */
+    -o-transform: rotatey(-180deg);  /* Opera 10.5 */
+     /* Saf3.1+ */
+    transform: rotatey(-180deg);
 }
 .flip .cardy {
     width: 100%;
