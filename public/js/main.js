@@ -32,48 +32,46 @@ $(document).ready(function () {
 
      $('.get-data').on ('click',   function (x) {
          console.log('works');
-        $target = $(x.target)||$(x.event);
-        const id = $target.attr('coll-id');
+         $target = $(x.target) || $(x.event);
+         const id = $target.attr('coll-id');
 
-        // fetch('/lingvo/getdata/'+id, {
-        //     credentials: 'include'
-        // })
-        //     .then(
-        //         res => res.json()
-        //         // function(response) {
-        //         //     return response.json();
-        //         }
-        //     )
-        //     .then(Lingvo);
-         if (window.XMLHttpRequest) { // Mozilla, Safari, ...
-             request = new XMLHttpRequest();
-         } else if (window.ActiveXObject) { // IE
-             try {
-                 request = new ActiveXObject('Msxml2.XMLHTTP');
-             }
-             catch (e) {
-                 try {
-                     request = new ActiveXObject('Microsoft.XMLHTTP');
-                 }
-                 catch (e) {}
-             }
-         }
-
-         function onLoadListener() {
-             var data = JSON.parse(this.responseText);
-
-             Lingvo(data);
-         }
-
-         function onErrorListener(err) {
-             console.log('XHR Error :', err);
-         }
-
-         request.onload = onLoadListener;
-         request.onerror = onErrorListener;
-         request.open('get', '/lingvo/getdata/'+id, true);
-         request.send();
-    });
+         fetch('/lingvo/getdata/' + id, {
+             credentials: 'include'
+         })
+             .then(
+                 res => res.json()
+             )
+             .then(Lingvo);
+     });
+    //      if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+    //          request = new XMLHttpRequest();
+    //      } else if (window.ActiveXObject) { // IE
+    //          try {
+    //              request = new ActiveXObject('Msxml2.XMLHTTP');
+    //          }
+    //          catch (e) {
+    //              try {
+    //                  request = new ActiveXObject('Microsoft.XMLHTTP');
+    //              }
+    //              catch (e) {}
+    //          }
+    //      }
+    //
+    //      function onLoadListener() {
+    //          var data = JSON.parse(this.responseText);
+    //
+    //          Lingvo(data);
+    //      }
+    //
+    //      function onErrorListener(err) {
+    //          console.log('XHR Error :', err);
+    //      }
+    //
+    //      request.onload = onLoadListener;
+    //      request.onerror = onErrorListener;
+    //      request.open('get', '/lingvo/getdata/'+id, true);
+    //      request.send();
+    // });
 
     function Lingvo(data) {
         $('.description').hide();
