@@ -212,7 +212,7 @@ console.log(arrnow);
 
 
     $('#js-flip').bind('click ', function () {
-        $('#js-flip .card').toggleClass('flipped');
+        $('#js-flip .cardy').toggleClass('flipped');
     });
     $('#translate').on('click', function (x) {
         $('.back').toggleClass('hid');

@@ -122,7 +122,7 @@ label {
 .btn:hover, .btn-danger:hover {
     background-color: #0ab5bc;
 }
-.flip .card .back {
+.flip .cardy .back {
   font-size: 2em;
   line-height: 50px;
 }
@@ -131,25 +131,25 @@ label {
   padding:5px;
   margin:10px;
 }
-.task.flip.card.face {
+.task.flip.cardy.face {
   line-height: 250px;
   font-family: Georgia;
 }
 .question {
   margin-top: 20px;
 }
-.operate .flip .card .back {
+.operate .flip .cardy .back {
   font-size:1.8em;
 }
-.operate .flip,.operate .flip .card  {
+.operate .flip  {
   height: 360px;
   width: 600px;
 }
-.operate .flip .card{
-    width:100%;
-    height:100%
-}
-.operate .flip .card .back {
+/*.operate .flip .card{*/
+    /*width:100%;*/
+    /*height:100%*/
+/*}*/
+.operate .flip .cardy .back {
   padding: 10px;
 }
 
