@@ -46,7 +46,10 @@
 #task-space {
   float: left;
   width:45%;
-
+  background-color: white;
+  line-height: 300px;
+  height: 360px;
+  font-family: Georgia;
 }
 .options {
 float:right;
@@ -163,7 +166,7 @@ hr, .operate hr  {
 .operate #fface {
   line-height: 300px;
 }
-.options {
-    font-size: 0.5em;
-    line-height: 5px;
+.options>.demo {
+    font-size: 1.5em;
+    line-height: 30px;
 }
