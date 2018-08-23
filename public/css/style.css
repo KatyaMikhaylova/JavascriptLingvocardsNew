@@ -89,10 +89,10 @@ h1 {
   color: #434343;
   text-align: center;
 }
-.nav>li>a {
-  font-size:1.2em;
+/*.nav>li>a {*/
+  /*font-size:1.2em;*/
 
-}
+/*}*/
 a.navbar-brand {
   font-size:1.4em;
 }
@@ -162,4 +162,8 @@ hr, .operate hr  {
 }
 .operate #fface {
   line-height: 300px;
+}
+.options {
+    font-size: 0.5em;
+    line-height: 5px;
 }

@@ -22,7 +22,9 @@ block content
         .popup(style="display: none")
             p.mess
             a.btn.btn-danger( id='next_question') #{__('NEXT')}
-        .task.flip.cardy.face(id='task-space')
+        .task
+            .cardy
+                .face(id='task-space')
 
         .options
             .demo.bordered(id='first' data-answ='')
