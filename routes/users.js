@@ -22,11 +22,11 @@ router.post('/register', function(req, res){
   const password = req.body.password;
   const password2 = req.body.password2;
 console.log(username);
-  req.checkBody('username', 'Username is required').notEmpty();
-  req.checkBody('email', 'Email is required').notEmpty();
-  req.checkBody('email', 'Email is not valid').isEmail();
-  req.checkBody('password', 'Password is required').notEmpty();
-  req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+  req.checkBody('username', 'Имя пользователя является обязательным полем').notEmpty();
+  req.checkBody('email', 'Email является обязательным полем').notEmpty();
+  req.checkBody('email', 'Email не соответствует условиям').isEmail();
+  req.checkBody('password', 'Поле с паролем должно быть заполнено').notEmpty();
+  req.checkBody('password2', 'Пароли не совпадают').equals(req.body.password);
 
   let errors = req.validationErrors();
 
@@ -54,7 +54,7 @@ console.log(newUser);
             console.log(err);
             return;
           } else {
-            req.flash('success','You are now registered and can log in');
+            req.flash('success','Вы зарегистрировались и можете выполнить вход');
             res.redirect('/users/login');
           }
         });
@@ -80,7 +80,7 @@ router.post('/login', function(req, res, next){
 // logout
 router.get('/logout', function(req, res){
   req.logout();
-  req.flash('success', 'You are logged out');
+  req.flash('success', 'Вы вышли из системы');
   res.redirect('/users/login');
 });
 
