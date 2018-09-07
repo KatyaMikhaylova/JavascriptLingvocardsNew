@@ -9,6 +9,7 @@ const passport = require('passport');
 const config = require('./config/database');
 const i18n=require("i18n-x");
 const cookieParser = require('cookie-parser');
+const mcache = require('memory-cache');
 
 mongoose.Promise = Promise;
 mongoose.connect(config.database
@@ -133,19 +134,40 @@ app.get ('/en', function (req,res) {
     res.cookie('lang', 'en', {maxAge:900000, httpOnly:true});
     res.redirect('back');
 });
+let cache = (duration) => {
+    return (req, res, next) => {
+        let key = '__express__' + req.originalUrl || req.url
+        let cachedBody = mcache.get(key)
+        if (cachedBody) {
+            res.send(cachedBody)
+            return
+        } else {
+            res.sendResponse = res.send
+            res.send = (body) => {
+                mcache.put(key, body, duration * 1000);
+                res.sendResponse(body)
+            }
+            next()
+        }
+    }
+}
+
 
 // Home Route
-app.get('/', function(req, res){
+app.get('/',  cache(10),  function(req, res){
   Collection.find({}, function(err, cards){
     if(err){
       console.log(err);
     } else {
+        setTimeout(() => {
       res.render('index', {
 
         cards: cards,
           locale: req.i18n.getLocale()
           //locale:req.cookie.lang
       });
+
+    }, 5000)
     }
   });
 
