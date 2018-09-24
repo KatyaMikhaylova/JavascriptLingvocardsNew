@@ -49,30 +49,30 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 // Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
-let MemoryStore = require('memorystore')(session);
+//let MemoryStore = require('memorystore')(session);
 // Express Session Middleware
-app.use(session({
-  secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true,
-    store: new MemoryStore(
-        {
-            checkPeriod: 86400000 // prune expired entries every 24h
-        }
-    )
-}));
+// app.use(session({
+//   secret: 'keyboard cat',
+//   resave: true,
+//   saveUninitialized: true,
+//     store: new MemoryStore(
+//         {
+//             checkPeriod: 86400000 // prune expired entries every 24h
+//         }
+//     )
+// }));
 app.set('trust proxy', 1);
 
-// app.use(session({
-//     cookie:{
-//         secure: true,
-//         maxAge:60000
-//     },
-//     store: new MongoStore({ mongooseConnection: db }),
-//     secret: 'secret',
-//     saveUninitialized: true,
-//     resave: false
-// }));
+app.use(session({
+    cookie:{
+        secure: true,
+        maxAge:60000
+    },
+    store: new MongoStore({ mongooseConnection: db }),
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: false
+}));
 
 app.use(function(req,res,next){
     if(!req.session){
