@@ -49,30 +49,30 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 // Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
-//let MemoryStore = require('memorystore')(session);
-// Express Session Middleware
-// app.use(session({
-//   secret: 'keyboard cat',
-//   resave: true,
-//   saveUninitialized: true,
-//     store: new MemoryStore(
-//         {
-//             checkPeriod: 86400000 // prune expired entries every 24h
-//         }
-//     )
-// }));
+let MemoryStore = require('memorystore')(session);
+//Express Session Middleware
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true,
+    store: new MemoryStore(
+        {
+            checkPeriod: 86400000 // prune expired entries every 24h
+        }
+    )
+}));
 app.set('trust proxy', 1);
 
-app.use(session({
-    cookie:{
-        secure: true,
-        maxAge:60000
-    },
-    store: new MongoStore({ mongooseConnection: db }),
-    secret: 'secret',
-    saveUninitialized: true,
-    resave: false
-}));
+// app.use(session({
+//     cookie:{
+//         secure: true,
+//         maxAge:60000
+//     },
+//     store: new MongoStore({ mongooseConnection: db }),
+//     secret: 'secret',
+//     saveUninitialized: true,
+//     resave: false
+// }));
 
 app.use(function(req,res,next){
     if(!req.session){
@@ -134,32 +134,32 @@ app.get ('/en', function (req,res) {
     res.cookie('lang', 'en', {maxAge:900000, httpOnly:true});
     res.redirect('back');
 });
-let cache = (duration) => {
-    return (req, res, next) => {
-        let key = '__express__' + req.originalUrl || req.url
-        let cachedBody = mcache.get(key)
-        if (cachedBody) {
-            res.send(cachedBody)
-            return
-        } else {
-            res.sendResponse = res.send
-            res.send = (body) => {
-                mcache.put(key, body, duration * 1000);
-                res.sendResponse(body)
-            }
-            next()
-        }
-    }
-}
+// let cache = (duration) => {
+//     return (req, res, next) => {
+//         let key = '__express__' + req.originalUrl || req.url
+//         let cachedBody = mcache.get(key)
+//         if (cachedBody) {
+//             res.send(cachedBody)
+//             return
+//         } else {
+//             res.sendResponse = res.send
+//             res.send = (body) => {
+//                 mcache.put(key, body, duration * 1000);
+//                 res.sendResponse(body)
+//             }
+//             next()
+//         }
+//     }
+// }
 
 
 // Home Route
-app.get('/',  cache(10),  function(req, res){
+app.get('/',    function(req, res){
   Collection.find({}, function(err, cards){
     if(err){
       console.log(err);
     } else {
-        setTimeout(() => {
+
       res.render('index', {
 
         cards: cards,
@@ -167,7 +167,7 @@ app.get('/',  cache(10),  function(req, res){
           //locale:req.cookie.lang
       });
 
-    }, 5000)
+
     }
   });
 
