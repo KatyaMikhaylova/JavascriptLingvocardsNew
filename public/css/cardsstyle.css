@@ -3,8 +3,8 @@ body {
 }
 .flip {
     -webkit-perspective: 800;
-    width: 600px;
-    height: 360px;
+    width: 40%;
+    height: 30%;
     position: relative;
     margin: 50px auto;
 }

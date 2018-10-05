@@ -135,25 +135,32 @@ label {
   margin:10px;
 }
 .task.flip.cardy.face {
-  line-height: 250px;
+  line-height: 2.2em;
   font-family: Georgia;
 }
 .question {
   margin-top: 20px;
 }
 .operate .flip .cardy .back {
-  font-size:1.8em;
+  /*max-font-size:1.5em;*/
 }
 .operate .flip  {
   height: 360px;
-  width: 600px;
+  width: 50%;
 }
-/*.operate .flip .card{*/
-    /*width:100%;*/
-    /*height:100%*/
-/*}*/
+.operate {
+  height:80%;
+}
+.operate .flip .cardy{
+    max-width:100%;
+    max-height:100%;
+
+
+}
 .operate .flip .cardy .back {
   padding: 10px;
+  max-width:100%;
+  max-height:100%;
 }
 
 hr, .operate hr  {
@@ -164,9 +171,9 @@ hr, .operate hr  {
   background-color: #333; /* Modern Browsers */
 }
 .operate #fface {
-  line-height: 300px;
+  line-height: 7em;
 }
 .options>.demo {
     font-size: 1.5em;
-    line-height: 30px;
+    line-height: 1.5em;
 }
