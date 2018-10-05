@@ -142,7 +142,7 @@ label {
   margin-top: 20px;
 }
 .operate .flip .cardy .back {
-  /*max-font-size:1.5em;*/
+  max-font-size:1.5em;
 }
 .operate .flip  {
   height: 360px;
@@ -176,4 +176,7 @@ hr, .operate hr  {
 .options>.demo {
     font-size: 1.5em;
     line-height: 1.5em;
+}
+.headline {
+  max-width: 100%;
 }

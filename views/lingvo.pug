@@ -11,11 +11,11 @@ block content
         .flip(id="js-flip")
             .cardy
                 .face.front(id="fface")=card.front
-                .face.back(id="fittext")
-                    .engl(id="bface")=card.back
-                    .russ(id="bfaceT")=card.translation
+                .face.back(id="respFit")
+                    p(id="bface" class='engl ' )=card.back
+                    p(id="bfaceT" class='russ ' )=card.translation
                     hr
-                    .exmpl(id="bfaceE")=card.example
+                    p(id="bfaceE" class='exmpl')=card.example
         a.btn.btn-danger( id='next_button') #{__('NEXT')}
         a.btn.btn-danger( id='translate') #{__('TRANSL')}
     .question(style="display: none")
